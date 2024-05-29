@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
+
+body {
+  background-image: linear-gradient(to right, #3d2052, #2b2952);
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  overflow-x: hidden;
+}
