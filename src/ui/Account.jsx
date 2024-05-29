@@ -1,12 +1,24 @@
 import { useState } from 'react';
+import { useUploadDump } from '../service/useUploadDump';
+import { useCurrAuth } from '../service/useCurrAuth';
 
 function Account() {
   const [isMessage, setIsMessage] = useState('');
 
+  const { isCurrUser, isLoading: isCurrLoading } = useCurrAuth();
+
+  const { sub } = isCurrUser.user_metadata;
+
+  const { isDumping, isLoading } = useUploadDump();
+
   function handleSubmit(e) {
     e.preventDefault();
+    if (!isMessage || !sub) return;
     console.log(isMessage);
+    isDumping({ isMessage, sub });
     setIsMessage('');
+
+    //
   }
 
   return (

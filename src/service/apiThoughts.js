@@ -11,11 +11,26 @@ export async function getThoughts() {
   return thoughts;
 }
 
-export async function uploadThoughts() {
+// export async function uploadThoughts({ isDumping, sub }) {
+//   console.log(isDumping);
+//   const { data, error } = await supabase
+//     .from('thoughts')
+//     .insert([{ content: isDumping, sub }])
+//     .select();
+//   if (error) {
+//     console.error(error.message);
+//     throw new Error();
+//   }
+
+//   return data;
+// }
+
+export async function uploadDump({ isDumping, sub }) {
   const { data, error } = await supabase
     .from('thoughts')
-    .insert([{ some_column: 'someValue', other_column: 'otherValue' }])
+    .insert([{ content: isDumping, userId: sub }])
     .select();
+
   if (error) {
     console.error(error.message);
     throw new Error();
@@ -23,7 +38,8 @@ export async function uploadThoughts() {
 
   return data;
 }
-// auth
+// authentication
+// //////////////////////////////////////////////////////////////////////
 export async function newUser({ email, password, name }) {
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -70,4 +86,12 @@ export async function currUserAuth() {
   }
 
   return user;
+}
+
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }
