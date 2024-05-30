@@ -3,7 +3,7 @@ import Blogs from '../ui/Blogs';
 
 function Home() {
   const { data, isLoading } = useThoughts();
-  console.log(data);
+
   if (isLoading) return <div className="h-3 w-fit animate-spin "></div>;
 
   return (
@@ -12,15 +12,6 @@ function Home() {
         {data.map((data) => (
           <Blogs data={data} key={data.id} />
         ))}
-        {/* <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs />
-        <Blogs text={'hehehheh whtasap me text and dump things to sha'} /> */}
       </div>
     </>
   );

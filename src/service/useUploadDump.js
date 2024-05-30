@@ -4,7 +4,8 @@ import toast from 'react-hot-toast';
 
 export function useUploadDump() {
   const { mutate: isDumping, isLoading } = useMutation({
-    mutationFn: ({ isDumping, sub }) => uploadDump({ isDumping, sub }),
+    mutationFn: ({ isMessage, id, isCheck, nameStorage }) =>
+      uploadDump({ isMessage, id, isCheck, nameStorage }),
     onSuccess: () => {
       toast.success('Dump uploaded');
     },
