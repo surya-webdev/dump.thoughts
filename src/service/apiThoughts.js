@@ -1,5 +1,5 @@
-import { SupabaseClient } from '@supabase/supabase-js';
 import { supabase } from './supabase';
+import { useCurrAuth } from './useCurrAuth';
 
 export async function getThoughts() {
   let { data: thoughts, error } = await supabase.from('thoughts').select('*');
@@ -27,6 +27,8 @@ export async function getThoughts() {
 // }
 
 export async function uploadDump({ isMessage, id, isCheck, nameStorage }) {
+  console.log(isMessage, id, isCheck, nameStorage);
+
   if (!isMessage || !id || !nameStorage) return;
 
   const { data, error } = await supabase
@@ -50,7 +52,7 @@ export async function uploadDump({ isMessage, id, isCheck, nameStorage }) {
 }
 
 export async function getDataById({ id }) {
-  // console.log(id);
+  console.log(id);
   const { data, error } = await supabase
     .from('thoughts')
     .select('*')

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import ErrorLabel from './ErrorLabel';
 import { useLogin } from '../service/useLogin';
+import NavLogo from './NavLogo';
 
 function Login() {
   const navigate = useNavigate();
@@ -17,62 +18,69 @@ function Login() {
   }
 
   return (
-    <div className=" my-[8rem] flex w-screen flex-col items-center justify-center">
-      <div>
-        <h2 className="my-10 text-3xl font-semibold text-slate-200">
-          Login to your Account
-        </h2>
-      </div>
-      <form
-        onSubmit={handleSubmit(submit)}
-        className="flex w-[25rem] flex-col gap-4 "
-      >
-        <label htmlFor="email" className={labels}>
-          Email
-        </label>
-        <input
-          disabled={isLoading}
-          id="email"
-          type="email"
-          className={inputStyle}
-          placeholder="eg:you@gmail.com"
-          {...register('email', {
-            required: 'this field required',
-            pattern: /\S+@\S+\.\S+/,
-            message: 'please enter the correct email ',
-          })}
-        />
-        {errors?.email && <ErrorLabel error={errors?.email?.message} />}
-        <label htmlFor="password" className={labels}>
-          Password
-        </label>
-        <input
-          disabled={isLoading}
-          id="password"
-          className={inputStyle}
-          placeholder="password"
-          type="password"
-          {...register('password', { required: 'Enter the password' })}
-        />
-        {errors?.password && <ErrorLabel error={errors?.password?.message} />}
-        <div>
-          <button
-            disabled={isLoading}
-            className="rounded-md bg-c-black p-4 text-xl text-slate-50 transition-all hover:opacity-90"
-          >
-            {isLoading ? '...loading' : 'Login'}
-          </button>
+    <div className="h-screen w-full">
+      <header className="flex">
+        <NavLogo />
+      </header>
+      <div className=" my-2 flex w-screen flex-col items-center justify-center">
+        <div className="text-center">
+          <h2 className="my-10 text-3xl font-semibold text-slate-200">
+            Login to your Account
+          </h2>
         </div>
-      </form>
-      <p className={labels + 'my-10 text-xl'}>
-        if you Doesn&apos;t have account {''}{' '}
-        <a
-          className="cursor-pointer text-c-black underline"
-          onClick={() => navigate('/signup')}
+        <form
+          onSubmit={handleSubmit(submit)}
+          className="flex w-full flex-col gap-4 px-5 sm:w-[25rem] "
         >
-          Sign Up
-        </a>
-      </p>
+          <label htmlFor="email" className={labels}>
+            Email
+          </label>
+          <input
+            disabled={isLoading}
+            id="email"
+            type="email"
+            className={inputStyle}
+            placeholder="eg:you@gmail.com"
+            {...register('email', {
+              required: 'this field required',
+              pattern: /\S+@\S+\.\S+/,
+              message: 'please enter the correct email ',
+            })}
+          />
+          {errors?.email && <ErrorLabel error={errors?.email?.message} />}
+          <label htmlFor="password" className={labels}>
+            Password
+          </label>
+          <input
+            disabled={isLoading}
+            id="password"
+            className={inputStyle}
+            placeholder="password"
+            type="password"
+            {...register('password', { required: 'Enter the password' })}
+          />
+          {errors?.password && <ErrorLabel error={errors?.password?.message} />}
+          <div>
+            <button
+              disabled={isLoading}
+              className="w-20 rounded-md bg-c-black p-4 text-xl text-slate-50 transition-all hover:opacity-90"
+            >
+              {isLoading ? '...loading' : 'Login'}
+            </button>
+          </div>
+        </form>
+        <div className="text-center">
+          <p className={labels + 'my-10 text-xl'}>
+            if you Doesn&apos;t have account {''}{' '}
+            <a
+              className="block cursor-pointer text-c-black underline"
+              onClick={() => navigate('/signup')}
+            >
+              Sign Up
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

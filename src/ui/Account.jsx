@@ -16,6 +16,7 @@ function Account() {
   // curr user
   const { data, isLoading: isUser } = useCurrUserId();
   // uploading
+
   const { isDumping, isLoading } = useUploadDump();
   const { isCurrUser, isLoading: isCurrLoading } = useCurrAuth();
   if (isCurrLoading || isLoading || isUser) return <Spinner />;
@@ -25,19 +26,21 @@ function Account() {
   let nameStorage;
 
   const { email, name } = isCurrUser.user_metadata;
+  console.log(email, name);
+
   if (
     email.includes('@gmail.com')
       ? (nameStorage = email.replace(/@gmail.com/g, ''))
       : null
-  )
-    if (name ? (nameStorage = name) : null);
+  );
+  name ? (nameStorage = name) : (nameStorage = email);
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(nameStorage);
     if (isMessage.length <= 2)
       return toast.error('Message should contain atleast 8 characters');
-    if (!isMessage || !id) return;
+    if (!isMessage || !id) return new Error('something went wrong');
 
     isDumping({ isMessage, id, isCheck, nameStorage });
     setIsMessage('');
@@ -46,7 +49,7 @@ function Account() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-6/12">
+      <div className="w-full p-5 sm:w-6/12">
         <form className="flex w-full flex-col gap-2" onSubmit={handleSubmit}>
           <label className="my-10 text-2xl font-semibold text-slate-200">
             Your Thoughts
