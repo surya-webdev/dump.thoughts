@@ -26,7 +26,7 @@ function Account() {
   let nameStorage;
 
   const { email, name } = isCurrUser.user_metadata;
-  console.log(email, name);
+  // console.log(email, name);
 
   if (
     email.includes('@gmail.com')

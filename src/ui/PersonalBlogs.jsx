@@ -34,11 +34,11 @@ function PersonalBlogs() {
 
   if (isData.length === 0) return;
   return (
-    <>
+    <div className="grid grid-cols-1 justify-between md:grid-cols-2 md:gap-10">
       {isData.map((el) => (
         <UserBlog data={el} key={el.id} />
       ))}
-    </>
+    </div>
   );
 }
 

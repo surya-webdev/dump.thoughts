@@ -8,7 +8,7 @@ function Home() {
 
   return (
     <>
-      <div className="grid w-full auto-cols-auto items-center justify-center overflow-x-hidden  px-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3   ">
+      <div className=" mx-[2rem] grid w-full items-center justify-center overflow-x-hidden  px-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3   ">
         {data.map((data) => (
           <Blogs data={data} key={data.id} />
         ))}
