@@ -8,5 +8,5 @@ body {
   background-image: linear-gradient(to right, #3d2052, #2b2952);
   background-size: cover;
   background-repeat: no-repeat;
-  /* overflow: hidden; */
+  overflow-x: hidden;
 }

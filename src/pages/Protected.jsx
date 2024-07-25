@@ -4,6 +4,7 @@ import Spinner from '../ui/Spinner';
 
 function Protected({ children }) {
   const navigate = useNavigate();
+
   const { isCurrUser, isLoading, isCheckAuth } = useCurrAuth();
 
   if (isLoading)

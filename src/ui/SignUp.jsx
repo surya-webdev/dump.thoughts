@@ -13,33 +13,6 @@ import ErrorLabel from './ErrorLabel';
 import NavLinks from './NavLinks';
 
 function SignUp() {
-  // const [session, setSession] = useState(null);
-
-  // useEffect(() => {
-  //   supabase.auth.getSession().then(({ data: { session } }) => {
-  //     setSession(session);
-  //   });
-
-  //   const {
-  //     data: { subscription },
-  //   } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session);
-  //   });
-
-  //   return () => subscription.unsubscribe();
-  // }, []);
-
-  // if (!session) {
-  //   return (
-  //     <div className="flex items-center justify-center">
-  //       <div>
-  //         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
-  //       </div>
-  //     </div>
-  //   );
-  // } else {
-  //   return navigate('/');
-  // }
   const navigate = useNavigate();
   const labels = 'text-2xl font-semibold text-slate-200 ';
   const inputStyle = 'h-10 rounded-md placeholder:px-2 ';
