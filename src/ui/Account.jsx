@@ -44,7 +44,6 @@ function Account() {
 
     isDumping({ isMessage, id, isCheck, nameStorage });
     setIsMessage('');
-    //
   }
 
   return (

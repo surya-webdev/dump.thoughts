@@ -66,6 +66,17 @@ export async function getDataById({ id }) {
   return data;
 }
 
+export async function deleteThoughtById(id) {
+  const { error } = await supabase.from('thoughts').delete().eq('id', id);
+
+  if (error) {
+    console.error(error.message);
+    throw new Error();
+  }
+
+  return true;
+}
+
 // authentication
 // //////////////////////////////////////////////////////////////////////
 export async function newUser({ email, password, name }) {

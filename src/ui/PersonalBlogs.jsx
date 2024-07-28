@@ -6,7 +6,9 @@ import { useQueryClient } from '@tanstack/react-query';
 
 function PersonalBlogs() {
   const queryClient = useQueryClient();
+
   const { isCurrUser, isLoading: isCurrLoading } = useCurrAuth();
+
   const [isData, setIsData] = useState('');
   // const { data, isLoading: isUser } = useCurrUserId();
   const { id } = isCurrUser;
@@ -23,16 +25,15 @@ function PersonalBlogs() {
       }
 
       setIsData(data);
-      // queryClient.invalidateQueries['upload-dump'];
-      // queryClient.invalidateQueries({ queryKey: ['upload-dump'] });
+
       queryClient.invalidateQueries({ queryKey: ['user'] });
-      // queryClient.invalidateQueries({ queryKey: ['thoughts'] });
     };
 
     fetchData();
   }, [id, queryClient]);
 
   if (isData.length === 0) return;
+
   return (
     <div className="grid grid-cols-1 justify-between md:grid-cols-2 md:gap-10">
       {isData.map((el) => (

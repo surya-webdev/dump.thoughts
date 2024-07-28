@@ -41,7 +41,7 @@ function SignUp() {
         </div>
         <form
           onSubmit={handleSubmit(submit)}
-          className="flex w-full flex-col gap-4 px-5"
+          className="flex w-full flex-col gap-4 px-5 md:w-2/4"
         >
           <label htmlFor="name" className={labels}>
             Your Name
